@@ -1,5 +1,0 @@
-<launch>
-    <rosparam file="$(find ctrl_pkg)/config/yfile.yaml" />
-    <node name="position_listener" pkg="ctrl_pkg" type="frontSteering_model.py" output="screen"/>
-    <node name="velociety_publisher" pkg="ctrl_pkg" type="frontSteering_model.py"/>
-</launch>
