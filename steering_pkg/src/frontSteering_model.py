@@ -5,20 +5,20 @@ from geometry_msgs.msg import Twist
 from turtlesim.msg import Pose
 from math import atan,cos,sin,pi,tan
 
-'''from yaml'''
+#from yaml
 Lr=rospy.get_param("/Lr")
 Lf=rospy.get_param("/Lf")
-"-----------Inputs and arguments preparation------------"
-lin_vel=float(input("Enter the car velocity\n") )#where lin_vel=0.5r(wl+wr) as the radius of each wheel is the same 
-delta= float(input("Enter the steering angle: \n"))
-sim_time=float(input("And the time of simulation"))
+#Inputs and arguments preparation
+lin_vel=float(input("Enter the car velocity=\n") )       #where lin_vel=0.5r(wl+wr) as the radius of each wheel is the same 
+delta= float(input("Enter the steering angle= \n"))
+sim_time=float(input("The simulation time= "))
 '''----------------------------------subscriber--------------------------------------'''
-'''once the subscriber get a new data save it in current position'''
+#once the subscriber get a new data save it in current position
 current_pose=Pose()
 def callback_pose(data):
-    current_pose.x=data.x
-    current_pose.y=data.y
-    current_pose.theta=data.theta
+    curr_pose.x=data.x
+    curr_pose.y=data.y
+    curr_pose.theta=data.theta
 
 
 '''subscriber node to get the current pose of the turtle from the /turtle1/pose topic'''
