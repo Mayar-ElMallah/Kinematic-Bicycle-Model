@@ -21,12 +21,12 @@ def callback_pose(data):
     curr_pose.theta=data.theta
 
 
-'''subscriber node to get the current pose of the turtle from the /turtle1/pose topic'''
+#subscriber node to get the current pose 
 def listener():
     rospy.init_node("position_listener",anonymous=True)
     pose_listener=rospy.Subscriber("/turtle1/pose",Pose,callback_pose)
 '''----------------------------------publisher------------------------------------------'''
-'''publisher node which publishes the linear and angle velociety to turtle1/cmd_vel topic'''
+#publisher node which publishes the linear and angle velociety
 def publishing():
  
     beta=atan((Lr/(Lf+Lr))*tan(delta))
@@ -45,20 +45,20 @@ def publishing():
      
 
 
-'''function to calculate the X and Y components of the linear velocity''' 
+#Function to calculate the X and Y components of the linear velocity
 def linear_velociety (beta,lin_vel):
     Vx=lin_vel*cos(beta+curr_pose.theta)
     Vy=lin_vel *sin(beta+curr_pose.theta)
     return Vx,Vy
 
     
-'''----------------------fuction to calc the angular velocity-------------------------------------'''
+#Fuction to calc the angular velocity
 def angular_velociety (beta,delta,lin_vel):
     ang =(lin_vel*cos(beta)*tan(delta))/(Lf+Lr)
     return ang
 
 
-'''--------------------------------------main function ------------------------------------------ '''
+#main function
 if __name__=="__main__":
     try:
         listener()
