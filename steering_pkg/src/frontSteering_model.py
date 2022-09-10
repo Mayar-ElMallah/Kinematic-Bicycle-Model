@@ -14,7 +14,7 @@ delta= float(input("Enter the steering angle= \n"))
 sim_time=float(input("The simulation time= "))
 '''----------------------------------subscriber--------------------------------------'''
 #once the subscriber get a new data save it in current position
-current_pose=Pose()
+curr_pose=Pose()
 def callback_pose(data):
     curr_pose.x=data.x
     curr_pose.y=data.y
@@ -47,8 +47,8 @@ def publishing():
 
 '''function to calculate the X and Y components of the linear velocity''' 
 def linear_velociety (beta,lin_vel):
-    Vx=lin_vel*cos(beta+current_pose.theta)
-    Vy=lin_vel *sin(beta+current_pose.theta)
+    Vx=lin_vel*cos(beta+curr_pose.theta)
+    Vy=lin_vel *sin(beta+curr_pose.theta)
     return Vx,Vy
 
     
